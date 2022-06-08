@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/nguye/Desktop/myself/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.67" />
+        <entry key="..\:/Users/nguye/.gradle/caches/transforms-3/f0ec6c9fe11ef2d7d789608f4af77c9e/transformed/OtpView-v1.1.2/res/drawable/bg_pin.xml" value="0.2225" />
+        <entry key="..\:/Users/nguye/Desktop/myself/MyApplication/app/src/main/res/drawable/bg_box.xml" value="0.2225" />
+        <entry key="..\:/Users/nguye/Desktop/myself/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/nguye/Desktop/myself/MyApplication/app/src/main/res/layout/otp_view_layout.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/nguye/Desktop/myself/MyApplication/otpview/src/main/res/drawable/xxx.xml" value="0.2225" />
         <entry key="..\:/Users/nguye/Desktop/myself/MyApplication/otpview/src/main/res/layout/otp_view_layout.xml" value="0.3625" />
       </map>
     </option>

@@ -6,16 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.otpview.OTPView
+    <com.otpview.OtpTextView
+        android:id="@+id/otpView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:fontFamily="@font/circularstd_bold"
+        android:hint="-"
+        android:textColor="#ff0000"
+        app:height="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:otp_hint="- "
-        app:otp_itemCount="6"
-        app:otp_itemHeight="40dp"
-        app:otp_itemWidth="40dp" />
+        app:length="6"
+        android:keyboardNavigationCluster="true"
+        app:otp_box_background="@drawable/bg_box"
+        android:imeOptions="actionDone"
+        app:width="48dp" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/otpView" />
+
+    <Button
+        android:id="@+id/buttonOk"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        android:layout_width="wrap_content"
+        android:text="OK Chua"
+        android:enabled="false"
+        android:layout_height="wrap_content" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
