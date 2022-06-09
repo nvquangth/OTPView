@@ -33,5 +33,7 @@
         <attr name="text_typeface" format="string" />
         <attr name="android:hint" />
         <attr name="android:fontFamily" />
+        <attr name="android:imeOptions" />
+        <attr name="hide_keyboard" format="boolean" />
     </declare-styleable>
 </resources>

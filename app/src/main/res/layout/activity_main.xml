@@ -12,34 +12,26 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/circularstd_bold"
         android:hint="-"
+        android:imeOptions="actionDone"
         android:textColor="#ff0000"
         app:height="48dp"
+        app:hide_keyboard="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:length="6"
-        android:keyboardNavigationCluster="true"
         app:otp_box_background="@drawable/bg_box"
-        android:imeOptions="actionDone"
         app:width="48dp" />
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="wrap_content"
-        android:layout_height="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/otpView" />
 
     <Button
         android:id="@+id/buttonOk"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view"
         android:layout_width="wrap_content"
-        android:text="OK Chua"
+        android:layout_height="wrap_content"
         android:enabled="false"
-        android:layout_height="wrap_content" />
+        android:text="OK Chua"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/otpView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

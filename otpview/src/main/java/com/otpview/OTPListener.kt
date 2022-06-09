@@ -11,4 +11,6 @@ interface OTPListener {
      * Callback Fired when user has completed filling the OTP/PIN.
      */
     fun onOTPComplete(otp: String)
+
+    fun onActionDoneClickListener()
 }

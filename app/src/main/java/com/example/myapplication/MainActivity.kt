@@ -27,6 +27,9 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this@MainActivity, "otp = $otp", Toast.LENGTH_SHORT).show()
             }
 
+            override fun onActionDoneClickListener() {
+                Toast.makeText(this@MainActivity, "ime click", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

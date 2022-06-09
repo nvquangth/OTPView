@@ -1,6 +1,7 @@
 package com.otpview
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.res.TypedArray
 import android.text.Editable
@@ -8,11 +9,14 @@ import android.text.InputFilter
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.Gravity
+import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import java.util.*
 import java.util.regex.Pattern
+
 
 class OtpTextView : FrameLayout {
 
@@ -21,15 +25,17 @@ class OtpTextView : FrameLayout {
     var otpListener: OTPListener? = null
 
     private var length: Int = 0
+    private var hideKeyboard = false
 
     private val filter: InputFilter
         get() = InputFilter { source, start, end, _, _, _ ->
             for (i in start until end) {
                 if (!Pattern.compile(
-                                PATTERN
+                        PATTERN
                     )
-                                .matcher(source[i].toString())
-                                .matches()) {
+                        .matcher(source[i].toString())
+                        .matches()
+                ) {
                     return@InputFilter ""
                 }
             }
@@ -74,6 +80,8 @@ class OtpTextView : FrameLayout {
             val spaceTop = styles.getDimension(R.styleable.OtpTextView_box_margin_top, Utils.getPixels(context, DEFAULT_SPACE_TOP).toFloat()).toInt()
             val spaceBottom = styles.getDimension(R.styleable.OtpTextView_box_margin_bottom, Utils.getPixels(context, DEFAULT_SPACE_BOTTOM).toFloat()).toInt()
             val params = LinearLayout.LayoutParams(width, height)
+            val imeOption = styles.getInt(R.styleable.OtpTextView_android_imeOptions, 0)
+            hideKeyboard = styles.getBoolean(R.styleable.OtpTextView_hide_keyboard, false)
             if (space > 0) {
                 params.setMargins(space, space, space, space)
             } else {
@@ -84,6 +92,11 @@ class OtpTextView : FrameLayout {
             editTextLayoutParams.gravity = Gravity.CENTER
             otpChildEditText = OTPChildEditText(context)
             otpChildEditText?.filters = arrayOf(filter, InputFilter.LengthFilter(length))
+            otpChildEditText?.imeOptions = imeOption
+            otpChildEditText?.setOnEditorActionListener { _, _, _ ->
+                otpListener?.onActionDoneClickListener()
+                false
+            }
             setTextWatcher(otpChildEditText)
             addView(otpChildEditText, editTextLayoutParams)
 
@@ -132,6 +145,9 @@ class OtpTextView : FrameLayout {
                     otpListener.onInteractionListener()
                     if (s.length == length) {
                         otpListener.onOTPComplete(s.toString())
+                        if (hideKeyboard) {
+                            hideKeyboardFrom(context, this@OtpTextView)
+                        }
                     }
                 }
                 setOTP(s)
@@ -199,6 +215,11 @@ class OtpTextView : FrameLayout {
 
     fun setOTP(otp: String) {
         otpChildEditText?.setText(otp)
+    }
+
+    fun hideKeyboardFrom(context: Context, view: View) {
+        val imm: InputMethodManager = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     @SuppressLint("ClickableViewAccessibility")

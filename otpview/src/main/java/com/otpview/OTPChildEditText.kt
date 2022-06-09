@@ -3,6 +3,7 @@ package com.otpview
 import android.content.Context
 import android.text.InputType
 import android.util.AttributeSet
+import android.view.inputmethod.EditorInfo
 
 internal class OTPChildEditText : androidx.appcompat.widget.AppCompatEditText {
 
