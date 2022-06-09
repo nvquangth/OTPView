@@ -25,7 +25,7 @@ class OtpTextView : FrameLayout {
     var otpListener: OTPListener? = null
 
     private var length: Int = 0
-    private var hideKeyboard = false
+    private var hideKeyboardWhenFulfilled = false
 
     private val filter: InputFilter
         get() = InputFilter { source, start, end, _, _, _ ->
@@ -81,7 +81,7 @@ class OtpTextView : FrameLayout {
             val spaceBottom = styles.getDimension(R.styleable.OtpTextView_box_margin_bottom, Utils.getPixels(context, DEFAULT_SPACE_BOTTOM).toFloat()).toInt()
             val params = LinearLayout.LayoutParams(width, height)
             val imeOption = styles.getInt(R.styleable.OtpTextView_android_imeOptions, 0)
-            hideKeyboard = styles.getBoolean(R.styleable.OtpTextView_hide_keyboard, false)
+            hideKeyboardWhenFulfilled = styles.getBoolean(R.styleable.OtpTextView_hide_keyboard_when_fulfilled, false)
             if (space > 0) {
                 params.setMargins(space, space, space, space)
             } else {
@@ -94,7 +94,7 @@ class OtpTextView : FrameLayout {
             otpChildEditText?.filters = arrayOf(filter, InputFilter.LengthFilter(length))
             otpChildEditText?.imeOptions = imeOption
             otpChildEditText?.setOnEditorActionListener { _, _, _ ->
-                otpListener?.onActionDoneClickListener()
+                otpListener?.onImeOptionClickListener()
                 false
             }
             setTextWatcher(otpChildEditText)
@@ -145,7 +145,7 @@ class OtpTextView : FrameLayout {
                     otpListener.onInteractionListener()
                     if (s.length == length) {
                         otpListener.onOTPComplete(s.toString())
-                        if (hideKeyboard) {
+                        if (hideKeyboardWhenFulfilled) {
                             hideKeyboardFrom(context, this@OtpTextView)
                         }
                     }

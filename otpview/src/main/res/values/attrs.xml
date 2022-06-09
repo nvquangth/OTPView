@@ -34,6 +34,6 @@
         <attr name="android:hint" />
         <attr name="android:fontFamily" />
         <attr name="android:imeOptions" />
-        <attr name="hide_keyboard" format="boolean" />
+        <attr name="hide_keyboard_when_fulfilled" format="boolean" />
     </declare-styleable>
 </resources>

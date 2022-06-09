@@ -15,7 +15,7 @@
         android:imeOptions="actionDone"
         android:textColor="#ff0000"
         app:height="48dp"
-        app:hide_keyboard="false"
+        app:hide_keyboard_when_fulfilled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

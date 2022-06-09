@@ -12,5 +12,5 @@ interface OTPListener {
      */
     fun onOTPComplete(otp: String)
 
-    fun onActionDoneClickListener()
+    fun onImeOptionClickListener()
 }
